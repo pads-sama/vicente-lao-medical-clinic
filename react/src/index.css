@@ -1,3 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root{
+    --poppins: 'Poppins', sans-serif;
+    --opensans: 'Open Sans', sans-serif;
+    --lineHeight: normal;
+    --fontBold: 700;
+    --fontSemiBold: 600;
+    --fontStyle: normal;
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding: 5rem;
+}
+
+.header1{
+    color: #0C134F;
+    font-family: var(--poppins) ;
+    font-size: 70px;
+    font-style: var(--fontStyle);
+    font-weight: var(--fontBold);
+    line-height: 70px;
+}
+
+.header2{
+    text-align: center;
+    font-family: var(--opensans);
+    font-size: 56px;
+    font-style: var(--fontStyle);
+    font-weight: var(--fontSemiBold);
+    line-height: var(--lineHeight);
+}
+
+.header3{
+    color: #F3F8FF;
+    text-align: center;
+    font-family: var(--opensans);
+    font-size: 32px;
+    font-style: var(--fontStyle);
+    font-weight: var(--fontSemiBold);
+    line-height: var(--lineHeight);
+}
+
+.navLinks{
+    font-size: 15px;
+    font-style: var(--fontStyle);
+    font-weight: var(--fontSemiBold);
+    line-height: var(--lineHeight);
+    text-transform: uppercase;
+}
+
+.desktop-logo{
+    width: 200px;
+    height: auto;
+    margin-left: -35px;
+}
+
+.mobile-logo{
+    width: 114px;
+    height: auto;
+    margin-left: -16px;
+}
+
+.slide-up {
+    -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  }
+
+@-webkit-keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(100px);
+      transform: translateY(100px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(100px);
+      transform: translateY(100px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
