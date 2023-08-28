@@ -1,7 +1,7 @@
 
 ## Screenshots
 
-![github screenshot](https://imgur.com/ZX9cNo8)
+![github screenshot](https://i.imgur.com/ZX9cNo8.png)
 ## Installation
 
 Copy the url or download the zip file
@@ -33,7 +33,7 @@ After that go to react folder and install node_modules and run the project using
 ```
 it will give you a link https://localhost:3000
 
-![link screenshot](https://imgur.com/NaEnbMe)
+![link screenshot](https://i.imgur.com/NaEnbMe.png)
 
 copy it and open in browser
 if your see an error 
