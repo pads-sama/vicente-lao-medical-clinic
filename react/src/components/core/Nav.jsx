@@ -1,126 +1,126 @@
+import { useState } from "react";
+import { logoWhite } from "../../asset";
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
+import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+
 const link = [
-  {name:'Login', to:'/login'},
-  {name:'Signup', to:'/signup'},
+    {name:'Login', to:'/login'},
+    {name:'Signup', to:'/signup'},
 ]
 const classNames = (...classes) => {
-  return classes.filter(Boolean).join(' ')
+    return classes.filter(Boolean).join(' ')
 }
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid'
-import { logoWhite } from "../../asset"
-import { NavLink } from 'react-router-dom'
-import { useState } from 'react'
-import { navLinks } from '../../constants'
 
 const Nav = () => {
-    const [active, setActive] = useState("Home");
-    const [toggle, setToggle] = useState(false);
-    const toggleMenu = () => {
-        setToggle((prevVisible) => !prevVisible);
-    };
+    // menu toggle for mobile
+    const [toggleMenu, setToggleMenu] = useState(false);
+    const onToggle = () => {
+        setToggleMenu((prev) => !prev) //this set the value of prev to its opposite on click
+}
+    // change the navbar on scroll
+    const [navColor, setNavColor] = useState(false);
+    const changeColor = () => { //this function will run if user scroll on the page  
+        if(window.scrollY >= 100){
+            setNavColor(true) //it'll set the setNavbar color to true if the height of the navbar is less than or equal to 100px
+        }else{
+            setNavColor(false) //if condition is not met it'll set is to false 
+        }
+    }
+    window.addEventListener('scroll', changeColor) //added eventlistener when user scroll it will listen to the changColor function 
 
 
   return (
     <>
-     <div className='w-full relative | xl:px-20'>
-        <div className="w-full">
-            <nav className="w-full">
-                <div className='w-full h-[100px] flex justify-between items-center'>
-                    <div className="w-64">
-                        <NavLink to={'/home'}>
-                        <img
-                            className='mobile-logo | md:hidden'
-                            src={logoWhite}
-                            alt="website logo"
-                        />
-                        <img
-                            className='hidden md:block desktop-logo'
-                            src={logoWhite}
-                            alt="website logo"
-                        />
-                        </NavLink>
-                    </div>
-                    <button 
-                        onClick={() => {
-                            toggleMenu();
-                            setActive(""); // Reset the active link when toggling menu
-                        }}
-                        className='md:hidden'
-                        >
-                        { toggle ? (
-                            <XMarkIcon className='w-[28px] h-auto text-bgColor'/>
-                        ) : (
-                            <Bars3Icon className='w-[28px] h-auto text-bgColor'/>
-                        )}
-                    </button>
-                    {/* desktop menu */}
-                    <ul className='hidden flex-1 items-center justify-center h-[100px] gap-[14px] | md:flex'>
-                    {navLinks.map((nav, index) => (
-                        <li
-                            key={nav.id}
-                            className={`font-poppins navLinks cursor-pointer text-[16px] hover:text-white ${
-                            active === nav.title ? "text-white" : "text-textColor"
-                            } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-                            onClick={() => setActive(nav.title)}
-                        >
-                            <a 
-                            href={`#${nav.id}`}
-                            className='scroll-smooth'
-                            >{nav.title}</a>
-                        </li>
-                        ))}
-                    </ul>                   
-                    <div className='hidden items-center justify-center gap-[14px] h-[100px] w-64 | md:flex'>
+        <nav className={`${ navColor ? 'bg-primaryColor' : 'bg-transparent'} fixed z-50 min-w-full h-[50px] flex items-center justify-between px-5 pl-2 font-roboto drop-shadow-lg | md:h-[100px] md:px-20`}>
+            <div>
+                <img 
+                    src={logoWhite} 
+                    alt="website logo" 
+                    className="w-[100px] h-auto | md:w-[150px]"
+                />
+            </div>
+            <button onClick={() => {
+                    onToggle();
+                    // setActive(""); 
+                }}
+                className='md:hidden'
+                >
+                { toggleMenu ? (
+                    <XMarkIcon className='w-[28px] h-auto text-textColor'/>
+                ) : (
+                    <Bars3Icon className='w-[28px] h-auto text-textColor'/>
+                )}
+            </button>
+            {/* desktop navigation */}
+            <ul className='justify-between flex-1 text-sm pl-72 text-textColor hidden | md:flex'>
+                <div className="flex">
+                    <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/20 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                        <a 
+                            href=""
+                            className="uppercase"
+                        >Home</a>
+                    </li>
+                    <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/20 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                        <a
+                            href="#doctor"
+                            className="uppercase"
+                        >Doctor</a>
+                    </li>
+                    <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/20 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                        <a
+                            href="#services"
+                            className="uppercase"
+                        >Services</a>
+                    </li>
+                    <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/20 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                        <a 
+                            href="#about"
+                            className="uppercase"
+                        >About</a>
+                    </li>
+                </div>
+                <div className='flex justify-center'>
                     {link.map((item) => (
                         <NavLink 
                             key={item.name}
                             to={item.to}
-                            className={classNames(item.name === 'Login' ? 'navLinks font-poppins px-[20px] text-textColor hover:text-white' : 'bg-blue-700 px-[50px] drop-shadow-lg uppercase rounded-full py-[10px] text-bgColor/80 text-opensans font-bold | hover:text-bgColor/100 hover:bg-blue-500')}
+                            className={classNames(item.name === 'Login' ? 'font-roboto text-textColor uppercase slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/20 hover:rounded-md hover:border-[1px] hover:border-white/20' : 'slide-up px-4 py-2 uppercase w-44 flex justify-center border bg-secondaryColor border-secondaryColor rounded-md hover:border-white/40 hover:bg-primaryColor drop-shadow-lg ')}
                             >
                             {item.name}
                         </NavLink>
                     ))}
-                    </div>
                 </div>
-            </nav>
-        </div>
-    </div>
-    {/* mobile navigation menu */}
+            </ul>
 
-    <div className={`w-[80%] h-auto bg-bgColor p-10 absolute top-20 right-0 rounded-l-lg slide-up space-y-4 z-50 overflow-hidden ${  toggle ? 'block' : 'hidden' }`}>
-        <ul className='space-y-4'>
-            {navLinks.map((nav, index) => (
-                <li
-                key={nav.id}
-                className={`font-poppins navLinks cursor-pointer text-[16px] slide-up ${
-                    active === nav.title ? "text-blue-700" : "text-textColor"
-                } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
-                onClick={() => {
-                    setActive(nav.title);
-                    toggleMenu(); // Close the mobile menu
-                }}
-                >
-                <a 
-                    href={`#${nav.id}`}
-                    className='hover:text-blue-700 scroll-smooth '
-                >
-                    {nav.title}
-                </a>
+            {/* mobile navigation */}
+            <ul className={`absolute inset-x-auto w-56 text-textColor right-1 h-80 rounded-md top-12 bg-secondaryColor border-[1px] border-white/20 shadow-2xl overflow-hidden slide-up flex-col px-5 py-14 text-sm ${toggleMenu ? 'flex' : 'hidden'}`}>
+                <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/30 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                    <a href="">Home</a>
                 </li>
-            ))}
-        </ul>
-
-        <div className='flex flex-col justify-center gap-[14px] w-64 | md:hidden'>
-        {link.map((item) => (
-            <NavLink 
-                key={item.name}
-                to={item.to}
-                className='navLinks font-poppins text-textColor text-[16px] slide-up hover:text-blue-700'
-                >
-                {item.name}
-            </NavLink>
-        ))}
-        </div>
-        </div>
+                <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/30 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                    <a href="#doctor">Doctor</a>
+                </li>
+                <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/30 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                    <a href="#services">Services</a>
+                </li>
+                <li className="slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/30 hover:rounded-md hover:border-[1px] hover:border-white/20">
+                    <a href="#about">About</a>
+                </li>
+            
+            <div className='flex flex-col justify-center | md:hidden'>
+                {link.map((item) => (
+                    <NavLink 
+                        key={item.name}
+                        to={item.to}
+                        className='slide-up px-4 py-2 border-[1px] border-transparent | hover:bg-gray-200/30 hover:rounded-md hover:border-[1px] hover:border-white/20'
+                        >
+                        {item.name}
+                    </NavLink>
+                ))}
+            </div>
+            </ul>
+        </nav>
     </>
   )
 }

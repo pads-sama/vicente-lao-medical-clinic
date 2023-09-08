@@ -7,9 +7,13 @@ import stethoscope from './stethoscope.svg';
 import injection from './injection.png';
 import heartRate from './heart-rate.svg';
 import cardiogram from './cardiogram.png';
-import doctorDefault from './doctor-default.png'
-import doctorVector from './doctor-vecto.jpg'
-
+import doctorDefault from './doctor-default.png';
+import doctorVector from './doctor-vecto.jpg';
+import bg from './bg-1.jpg';
+import bgto from './bg-2.jpg';
+import mobileBg from './bg-1 1.png'
+import doctorImage from './doctor-image.jpg'
+import loginBg from './loginBg.jpg'
 
 export {
     logoWhite,
@@ -22,5 +26,10 @@ export {
     heartRate,
     cardiogram,
     doctorDefault,
-    doctorVector
+    doctorVector,
+    bg,
+    bgto,
+    mobileBg,
+    doctorImage,
+    loginBg
 }

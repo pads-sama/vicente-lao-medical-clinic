@@ -6,15 +6,14 @@ export default {
   theme: {
     extend: {
       colors:{
-        primaryColor: 'hsla(190, 76%, 27%, 1)',
-        secondaryColor: 'hsla(224, 39%, 52%, 1)',
-        bgColor: 'hsl(215, 100%, 98%)',
-        textColor: 'hsla(223, 23%, 27%, 1)',
-        hoverColor: 'hsla(184, 59%, 49%, 1)'
+        primaryColor: '#23527c',
+        secondaryColor: '#00a3c8',
+        bgColor: '#EEEEEE',
+        textColor: '#F9F9F9',
+        darkText: '#191919',
       },
       fontFamily:{
-        poppins: 'var(--poppins)',
-        opensans: 'var(--opensans)'
+        roboto: 'var(--roboto)',
       }
     },
   },
